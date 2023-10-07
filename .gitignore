@@ -1,0 +1,13 @@
+## Помещайте сюда материалы (пути к файлам и папкам), специфичные для Python, чтобы проигнорировать отслеживание их изменений.
+venv/**/*
+*pyc
+/.idea/
+/node_modules/
+/sa11y/scripts/axe.min.js
+/dist/
+/sa11y.egg-info/
+/package-lock.json
+tests/.pytest_cache/*
+/.pytest_cache/
+geckodriver.log
+sbisplugin-setup-web.exe
