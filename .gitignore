@@ -10,4 +10,6 @@ venv/**/*
 tests/.pytest_cache/*
 /.pytest_cache/
 geckodriver.log
+## Помещайте сюда файлы, чтобы проигнорировать их отслеживание
 sbisplugin-setup-web.exe
+*.log
