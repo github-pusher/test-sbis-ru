@@ -1,40 +1,35 @@
 import re
 import time
 
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+from pages.sbis_pages import SbisContactsPage
 
 
-def test_location_determination():
-    driver = webdriver.Chrome()
+def test_location_determination(browser):
+    sbis_contacts_page = SbisContactsPage(browser)
 
-    driver.get("https://sbis.ru/contacts")
+    sbis_contacts_page.go_to_site()
 
-    title = driver.title
+    title = browser.title
     match = re.search(r"СБИС Контакты — \D+", title)
     assert title == match[0]
 
-    driver.implicitly_wait(0.5)
+    browser.implicitly_wait(0.5)
 
-    region_chooser_el = driver.find_element(by=By.CLASS_NAME, value="sbis_ru-Region-Chooser__text")
+    region_chooser_el = sbis_contacts_page.find_region_chooser_element()
     assert region_chooser_el.text != ""
 
-    driver.implicitly_wait(0.5)
+    browser.implicitly_wait(0.5)
 
-    region_chooser_el.click()
+    browser.execute_script("arguments[0].click();", region_chooser_el)
 
     time.sleep(3)
 
-    kamchatka_krai_el = driver.find_element(by=By.XPATH, value="//span[contains(text(),'41 Камчатский край')]")
-
-    kamchatka_krai_el.click()
+    sbis_contacts_page.click_on_kamchatka_krai()
 
     time.sleep(5)
 
-    url = driver.current_url
+    url = browser.current_url
     assert url == "https://sbis.ru/contacts/41-kamchatskij-kraj?tab=clients"
 
-    title = driver.title
+    title = browser.title
     assert title == "СБИС Контакты — Камчатский край"
-
-    driver.quit()
