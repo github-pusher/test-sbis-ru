@@ -4,7 +4,9 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from file_size_formatter import human_read_format
+from tests.downloads.file_size_formatter import human_read_format
+
+current_directory = os.getcwd()
 
 
 def test_download_success_and_downloaded_file_size():
@@ -12,7 +14,7 @@ def test_download_success_and_downloaded_file_size():
     options = webdriver.ChromeOptions()
 
     prefs = {
-        "download.default_directory": "test-sbis-ru",
+        "download.default_directory": current_directory,
         "safebrowsing.enabled": True,
         "profile.default_content_settings.popups": 0,
     }
@@ -35,14 +37,14 @@ def test_download_success_and_downloaded_file_size():
 
     time.sleep(1)
 
-    if not os.path.exists("test-sbis-ru\\sbisplugin-setup-web.exe"):
+    if not os.path.exists(f"{current_directory}\\sbisplugin-setup-web.exe"):
         download_exe_3_64_mb_el = driver.find_element(by=By.XPATH, value="//a[contains(text(),'Скачать (Exe 3.64 МБ)')]")
 
         download_exe_3_64_mb_el.click()
 
         time.sleep(5)
 
-    file_size = os.path.getsize("test-sbis-ru\\sbisplugin-setup-web.exe")
+    file_size = os.path.getsize(f"{current_directory}\\sbisplugin-setup-web.exe")
 
     assert human_read_format(file_size) == "3.64 МБ"
 
