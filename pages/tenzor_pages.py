@@ -4,8 +4,8 @@ from pages.base_app import BasePage
 
 
 class TenzorMainPageLocators:
-    LOCATOR_POWER_IS_IN_PEOPLE = (By.CLASS_NAME, "tensor_ru-Index__block4-bg")
-    LOCATOR_WE_ARE_WORKING = (By.CLASS_NAME, "tensor_ru-About__block3")
+    LOCATOR_POWER_IS_IN_PEOPLE = (By.XPATH, "//div[@class='tensor_ru-Index__block4-content tensor_ru-Index__card']")
+    LOCATOR_WE_ARE_WORKING = (By.XPATH, "//div[@class='tensor_ru-container tensor_ru-section tensor_ru-About__block3']")
 
 
 class TenzorMainPage(BasePage):

@@ -4,7 +4,8 @@ from pages.base_app import BasePage
 
 
 class SbisContactsPageLocators:
-    LOCATOR_TENZOR_LOGO = (By.CLASS_NAME, "sbisru-Contacts__logo-tensor")
+    # LOCATOR_TENZOR_LOGO = (By.CLASS_NAME, "sbisru-Contacts__logo-tensor")
+    LOCATOR_TENZOR_LOGO = (By.XPATH, "//a[@class='sbisru-Contacts__logo-tensor mb-12']")
     LOCATOR_REGION_CHOOSER = (By.CLASS_NAME, "sbis_ru-Region-Chooser__text")
     LOCATOR_KAMCHATKA_KRAI = (By.XPATH, "//span[contains(text(),'41 Камчатский край')]")
     LOCATOR_DOWNLOAD_SBIS = (By.XPATH, "//a[contains(text(),'Скачать СБИС')]")
@@ -35,7 +36,7 @@ class SbisContactsPage(BasePage):
         super().__init__(driver, "https://sbis.ru", "contacts")
 
     def click_on_the_tenzor_logo(self):
-        return self.find_element(SbisContactsPageLocators.LOCATOR_TENZOR_LOGO, time=2).click()
+        return self.find_element(SbisContactsPageLocators.LOCATOR_TENZOR_LOGO, time=2).click()  # надёжный метод
 
     def find_region_chooser_element(self):
         return self.find_element(SbisContactsPageLocators.LOCATOR_REGION_CHOOSER, time=2)
