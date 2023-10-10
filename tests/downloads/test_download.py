@@ -5,7 +5,7 @@ import time
 
 from selenium import webdriver
 
-from tests.downloads.file_size_formatter import human_read_format
+from helpers.file_size_formatter import human_read_format
 
 from pages.sbis_pages import SbisMainPage
 
@@ -45,16 +45,14 @@ def test_download_success_and_downloaded_file_size(log_path):
 
     sbis_main_page.click_on_download_sbis()
 
-    time.sleep(3)
+    time.sleep(1)
 
     sbis_main_page.click_on_download_plugin()
-
-    time.sleep(1)
 
     if not os.path.exists(f"{current_directory}\\sbisplugin-setup-web.exe"):
         sbis_main_page.click_on_download_exe_3_64_mb()
 
-        time.sleep(10)
+        time.sleep(5)
 
     file_size = os.path.getsize(f"{current_directory}\\sbisplugin-setup-web.exe")
 

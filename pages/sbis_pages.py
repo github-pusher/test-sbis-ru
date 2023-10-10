@@ -4,9 +4,8 @@ from pages.base_app import BasePage
 
 
 class SbisContactsPageLocators:
-    # LOCATOR_TENZOR_LOGO = (By.CLASS_NAME, "sbisru-Contacts__logo-tensor")
     LOCATOR_TENZOR_LOGO = (By.XPATH, "//a[@class='sbisru-Contacts__logo-tensor mb-12']")
-    LOCATOR_REGION_CHOOSER = (By.CLASS_NAME, "sbis_ru-Region-Chooser__text")
+    LOCATOR_REGION_CHOOSER = (By.XPATH, "//span[@class='sbis_ru-Region-Chooser ml-16 ml-xm-0']//span[@class='sbis_ru-Region-Chooser__text sbis_ru-link']")
     LOCATOR_KAMCHATKA_KRAI = (By.XPATH, "//span[contains(text(),'41 Камчатский край')]")
     LOCATOR_DOWNLOAD_SBIS = (By.XPATH, "//a[contains(text(),'Скачать СБИС')]")
     LOCATOR_DOWNLOAD_PLUGIN = (By.CSS_SELECTOR, "div.controls-TabButtons>div:nth-child(2)")
